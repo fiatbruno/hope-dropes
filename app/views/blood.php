@@ -33,19 +33,19 @@
             <div class="blood-group">
                 <div class="grouper">
                     <div class="form-check">
-                        <input type="radio" value="A" name="blood-group" class="form-check-input btn-circle p-2"></input>
+                        <input type="radio" value="A" name="blood-group" class="form-check-input p-2"></input>
                         <label class="form-check-label" for="flexCheckDefault">A</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" value="B" name="blood-group" class="form-check-input btn-circle p-2"></input>
+                        <input type="radio" value="B" name="blood-group" class="form-check-input p-2"></input>
                         <label class="form-check-label" for="flexCheckDefault">B</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" value="O" name="blood-group" class="form-check-input btn-circle p-2"></input>
+                        <input type="radio" value="O" name="blood-group" class="form-check-input p-2"></input>
                         <label class="form-check-label" for="flexCheckDefault">O</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" value="AB" name="blood-group" class="form-check-input btn-circle double p-2"></input>
+                        <input type="radio" value="AB" name="blood-group" class="form-check-input p-2"></input>
                         <label class="form-check-label" for="flexCheckDefault">AB</label>
                     </div>
                 </div>
@@ -53,11 +53,11 @@
                 <p>Either <span>+</span> or <span>-</span></p>
                 <div class="grouper">
                     <div class="form-check">
-                        <input type="radio" value="-" name="blood-group-sign" class="form-check-input btn-circle p-2"></input>
+                        <input type="radio" value="-" name="blood-group-sign" class="form-check-input p-2"></input>
                         <label class="form-check-label" for="flexCheckDefault">-</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" value="+" name="blood-group-sign" class="form-check-input btn-circle p-2"></input>
+                        <input type="radio" value="+" name="blood-group-sign" class="form-check-input p-2"></input>
                         <label class="form-check-label" for="flexCheckDefault">+</label>
                     </div>
                 </div>
