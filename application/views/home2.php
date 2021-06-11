@@ -12,7 +12,7 @@
 <body>
     <div class="container my-2 shadow-sm p-2 col-12">
         <nav class="nav justify-content-end">
-            <!-- <img src="<?php echo base_url("images/blood@2x.png")?>" alt="image" id="logo"> -->
+            <!-- <img src="" alt="image" id="logo"> -->
             <a href="" class="nav-link active bg-danger text-light rounded px-5">Home</a>
             <a href="" class="nav-link">Login</a>
         </nav>
@@ -51,7 +51,8 @@
                   <div class="card mx-2 col-sm-12" style="width: 18rem;">
                     <img class="card-img-top" src="<?php echo base_url('images/12349205.jpg');?>" alt="Card image cap">
                     <div class="card-body">
-                      <p class="card-text">Blood donation costs you nothing but it can mean a world to someone in need</p>
+                      <p class="card-text">Every single drop of your own blood, is capable of putting a smile on someone's face
+                      and hope on someone's heart.</p>
                       <footer class="blockquote-footer" id="footer2">anonymous</footer>
                     </div>
                   </div>
