@@ -30,7 +30,7 @@ class Blood extends CI_Controller{
                     // Temporary Message
 
                     $this->session->set_flashdata("success", " You will soon get an Email! :)");
-
+                    
                     // Redirect to profile page
                     redirect('user/profile', 'refresh');
 
