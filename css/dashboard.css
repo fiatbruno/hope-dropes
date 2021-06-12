@@ -39,6 +39,7 @@ body {
 
 a{
     text-decoration: underline 5px;
+    color: whitesmoke;
 }
 
 h1 {
@@ -72,6 +73,7 @@ h1 {
 .grouper {
 	padding: 2rem;
 }
+
 .navbar{
     background: #fff;
     margin: auto;

@@ -73,13 +73,12 @@ class Auth extends CI_Controller{
                 if ($user->email) {
                     // Temporary Message
 
-                    $this->session->set_flashdata("success", " Wow you logged in! :)");
 
                     $_SESSION['user_logged'] = TRUE;
                     $_SESSION['username'] = $user->username;
                     
                     // Redirect to profile page
-                    redirect('user/profile', 'refresh');
+                    redirect('dashboard/index', 'refresh');
 
                 } else {
 

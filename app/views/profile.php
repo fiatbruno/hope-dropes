@@ -34,6 +34,8 @@
         <a href="<?php echo base_url(); ?>auth/logout">Log Out</a>
         <br><br>
         <a href="<?php echo base_url(); ?>blood/chooseBlood">Blood Type</a>
+        <br><br>
+        <a href="<?php echo base_url(); ?>dashboard/index">Dashboard</a>
         
     </div>
 
