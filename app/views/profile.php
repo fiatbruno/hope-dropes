@@ -35,6 +35,8 @@
         <br><br>
         <a href="<?php echo base_url(); ?>blood/chooseBlood">Blood Type</a>
         <br><br>
+        <a href="<?php echo base_url(); ?>reset/send_mail">Reset Password</a>
+        <br><br>
         <a href="<?php echo base_url(); ?>dashboard/index">Dashboard</a>
         
     </div>

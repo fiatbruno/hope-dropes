@@ -25,8 +25,9 @@ try {
     $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('fiatbruno96@gmail.com', 'Mailer');
-    $mail->addAddress('fiatbruno10@gmail.com', 'fiat bruno');     //Add a recipient
+
+    $mail->setFrom('fiatbruno96@gmail.com', 'Hope Drops');
+    $mail->addAddress($_SESSION['email'], $_SESSION['username']);     //Add a recipient
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
@@ -38,11 +39,17 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Blood Donation';
-    $mail->Body    = '<h1>Blood Donation</h1><br>The blood donation appointment is on <b>18/06/2021</b>';
+    $mail->Body    = "<h1>Blood Donation</h1><br><p>Hello". $_SESSION['username'] ."</p><p>The blood donation appointment is on <b>18/06/2021</b></p>";
     $mail->AltBody = 'The blood donation appointment is on ||18/06/2021||';
 
     $mail->send();
-    echo 'Message has been sent';
+    
+    $this->session->set_flashdata("success", " Email sent successfully ! :)");   
+
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+
+    $this->session->set_flashdata("error", "Email wasn't sent ! :( {$mail->ErrorInfo}");
 }
+
+// Redirect to profile page
+redirect('user/profile', 'refresh');

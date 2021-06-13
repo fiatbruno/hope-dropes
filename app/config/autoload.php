@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | 1. Packages
 | 2. Libraries
 | 3. Drivers
-| 4. Helper files
+| 4. per
+per files
 | 5. Custom config files
 | 6. Language files
 | 7. Models
@@ -58,7 +59,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','form_validation');
+$autoload['libraries'] = array('database','session','form_validation','email');
 
 /*
 | -------------------------------------------------------------------

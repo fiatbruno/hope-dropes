@@ -40,7 +40,7 @@ class Blood extends CI_Controller{
                             <h1> Hi  ".$_SESSION['username']." </h1>
                             <p>
                             This is an email from Hope Drops about the donation you applied for. 
-                            For complete Information about our working process, click <a href='#'>Here</a>. 
+                            For complete Information about our working process, click <a href='". base_url() ."auth/login'>Here</a>. 
                             Your appointment will be on the <b>19/07/2021</b>.
                             </p>
                             </body>
@@ -49,7 +49,7 @@ class Blood extends CI_Controller{
                         $this->load->library('email');
                         $config['mailtype'] = 'html';
                         $this->email->initialize($config);
-                        $this->email->from("fiatbruno96@gmail.com");
+                        $this->email->from("fiatbruno96@gmail.com", "Hope Drops");
                         $this->email->to($_SESSION['email']);
                         $this->email->subject($subject);
                         $this->email->message($message);
