@@ -76,6 +76,8 @@ class Auth extends CI_Controller{
 
                     $_SESSION['user_logged'] = TRUE;
                     $_SESSION['username'] = $user->username;
+                    $_SESSION['user_id'] = $user->user_id;
+                    $_SESSION['email'] = $user->email;
                     
                     // Redirect to profile page
                     redirect('dashboard/index', 'refresh');
