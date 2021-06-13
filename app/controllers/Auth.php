@@ -6,7 +6,7 @@ class Auth extends CI_Controller{
         parent::__construct();
     }
     public function register(){
-        
+
         if (isset($_POST['register'])) {
             
             $this->form_validation->set_rules('username','Username','required');
@@ -78,6 +78,23 @@ class Auth extends CI_Controller{
                     $_SESSION['username'] = $user->username;
                     $_SESSION['user_id'] = $user->user_id;
                     $_SESSION['email'] = $user->email;
+                    
+                    $getloc = json_decode(file_get_contents("http://ipinfo.io/"));
+                    $coordinates = explode(",", $getloc->loc);
+
+                    $data = array(
+                        "user_id"=>$user->user_id,
+                        "ip"=>$_SERVER['REMOTE_ADDR'],
+                        "city"=> $getloc->city,
+                        "region"=> $getloc->region,
+                        "country"=> $getloc->country,
+                        "latitude"=> $coordinates[0],
+                        "longitude"=>$coordinates[1],
+                        "postal"=>  ($getloc->postal == NULL) ? 0 : $getloc->postal,
+                        "timezone"=> $getloc->timezone,
+                    );
+
+                    $this->db->insert('location',$data);
                     
                     // Redirect to profile page
                     redirect('dashboard/index', 'refresh');
