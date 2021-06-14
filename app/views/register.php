@@ -7,6 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+
     
     <!-- My Style Sheet -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
@@ -25,16 +27,16 @@
             <p>Already have an account? <a href="login">Login</a></p>
         </div>
         <p>Fill out the credentials</p>
-        <?php if (isset($_SESSION['success'])) {?>
+        <?php if (isset($_SESSION['success'])) { ?>
         
         <div class="alert alert-success"><?php echo $_SESSION["success"];?></div>
-        <?php
-        }?>
-        <?php if (isset($_SESSION['error'])) {?>
+        <?php 
+        } ?>
+        <?php if (isset($_SESSION['error'])) { ?>
         
         <div class="alert alert-danger"><?php echo $_SESSION["error"];?></div>
         <?php
-        }?>
+        } ?>
         <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
         <form action="" method="POST">
             <div class="form-group">
@@ -52,6 +54,10 @@
             <div class="form-group">
                 <label for="password2" class="label-default">Confirm Password:</label>
                 <input name="password2" class="form-control" id="password2" type="password">
+            </div>
+            <div class="form-group">
+                <label for="role" class="label-default">Role:</label>
+                <input name="role" class="form-control" id="role" type="text">
             </div>
             <div class="form-group">
                 <label for="gender" class="label-default">Gender:</label>

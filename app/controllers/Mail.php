@@ -9,6 +9,11 @@ class Mail extends CI_Controller{
             $this->session->set_flashdata("error", "Loggin' to access this page!");
             redirect("auth/login");
         }
+        if ($_SESSION['admin'] == FALSE) {
+            
+            $this->session->set_flashdata("error", "You need Admin Permissions to access this page!");
+            redirect("user/profile");
+        }
     }
 
     public function index()  
