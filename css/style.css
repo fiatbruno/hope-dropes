@@ -1,0 +1,66 @@
+.form {
+	margin: auto;
+	border: 1px solid black;
+	padding: 5rem;
+	border-radius: 3rem;
+	box-shadow: 20px 20px #212529;
+	background-color: #fff;
+}
+.btn-blood {
+	margin: 12px 0;
+	width: 40%;
+	background-color: #fd3a5c;
+	color: #fff;
+}
+.btn-blood:hover {
+	background-color: #fff;
+	color: #fd3a5c;
+	border: 1px solid #fd3a5c;
+}
+body {
+	font-family: "Poppins";
+	font-weight: 900;
+	background: #dc1c13; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#f07470,
+		#dc1c13
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#f07470,
+		#dc1c13
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h1 {
+	padding-bottom: 2rem;
+	text-decoration: underline 8px #fd3a5c;
+}
+.head {
+	display: flex;
+	justify-content: center;
+	text-decoration: underline 10px #fd3a5c;
+	align-items: center;
+	margin-top: 3rem;
+	text-transform: uppercase;
+}
+
+.btn-circle {
+	border: 3px solid #000;
+	border-radius: 10px;
+	background: #fd3a5c;
+	margin-bottom: 1rem;
+	outline: none;
+}
+.btn-circle:hover {
+	border: 3px solid #fd3a5c;
+	color: #fd3a5c;
+	background: #fff;
+}
+.blood-group {
+	display: flex;
+}
+.grouper {
+	padding: 2rem;
+}

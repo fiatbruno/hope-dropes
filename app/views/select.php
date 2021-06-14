@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container table-responsive">
+        <table class="table table-bordered table-stripped">
+            <tr>
+                <th>Village ID</th>
+                <th>Village</th>
+                <th>Cell</th>
+                <th>Sector</th>
+                <th>District</th>
+                <th>Province</th>
+            </tr>
+            <?php foreach($h->result() as $row){?>
+            <tr>
+                <td><?=$row->villageId;?></td>
+                <td><?=$row->villageName;?></td>
+                <td><?=$row->cellName;?></td>
+                <td><?=$row->sectorName;?></td>
+                <td><?=$row->districtName;?></td>
+                <td><?=$row->provinceName;?></td>
+            </tr>
+            <?php } ?>
+        </table>
+    </div>
+</body>
+</html>
