@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="<?php echo base_url()?>assets/style.css">
 </head>
 <body>
-    <div class="container d-flex justify-content-end">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100 d-flex justify-content-end">
     <a class="navbar-brand" href="#">
         <img src="<?php echo base_url()?>assets/images/logo.jpg" alt="" style="height:15%; width:15%;" class="d-inline-block align-text-top">
      <span class="text-center mt-5">HopeDropes</span> 
@@ -32,9 +31,8 @@
     </div>
   </div>
 </nav>
-    </div>
-    <div class="container">
-    <form action="" class="form w-75 m-auto bg-danger mt-3 rounded" method="post">
+    <div class="container my-2">
+    <form action="<?php echo base_url()?>UserDashboard/updateprofile" class="form w-75 m-auto bg-danger mt-3 rounded" method="post">
     <h1 class="heading mx-5 text-center text-white">My profile</h1>
     <img src="<?php echo base_url();?>assets/images/profile.png" style="width:80px; height:80px;" class="image m-auto" alt="">
     <div class="user">

@@ -13,15 +13,15 @@ if(isset($_SESSION['error'])){
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
 
 
-<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="C:/xampp/htdocs/hopedropesp/assets/calendar-14/fonts/icomoon/style.css">
 
-<link rel="stylesheet" href="<?php base_url('assets/css/rome.css');?>">
+<link rel="stylesheet" href="<?php base_url('assets/calender-14/css/rome.css');?>">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="<?php base_url();?>assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php base_url();?>assets/calender-14/css/bootstrap.min.css">
 
 <!-- Style -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="<?php base_url();?>assets/calender-14/css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <meta charset="UTF-8">
@@ -31,14 +31,12 @@ if(isset($_SESSION['error'])){
     <link rel="stylesheet" href="<?php echo base_url()?>assets/style.css">
 </head>
 <body>
-    <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-light w-100 d-flex justify-content-end">
     <a class="navbar-brand" href="#">
         <img src="<?php echo base_url()?>assets/images/logo.jpg" alt="" style="height:15%; width:15%;" class="d-inline-block align-text-top">
      <span class="text-center mt-5">HopeDropes</span> 
     </a>
   <div class="container-fluid">
-    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -54,13 +52,14 @@ if(isset($_SESSION['error'])){
     </div>
   </div>
 </nav>
-    </div>
-
+<div class="w-100">
+<?php $this->session->flashdata('message')?>
+</div>
     <div class="container my-5">
         <div class="row mt-5" id="row">
             <!-- <div  class="col-4"> -->
             <p class="text-center w-25 mt-5 col-4">The blood I was given gave me power to work harder and be more stronger</p>
-            
+            <!-- <p class="text-center w-25 mt-5 col-4" >The greatest investment of life is when you save someone with few drops of your own blood</p> -->
             <!-- </div> -->
             <!-- <div class="col-8"> -->
             <img src="<?php echo base_url()?>assets/images/mysvg.jpg" alt="image"class="w-75 col-8">
@@ -92,35 +91,18 @@ if(isset($_SESSION['error'])){
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST" class="form">
-        <div class="content">
-    
-    <div class="container text-left">
-      <div class="row justify-content-center">
-        <div class="col-lg-3">
-          <form action="#" class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="input_from">Select Date</label>
-                <input type="text" class="form-control" id="input">
-              </div>
-            </div>
+          <form action="<?php echo base_url()?>UserDashboard/makeappointment" method="POST">
+              <label for="date">Select date</label>
+              <input type="date" name="date" id="date">
+              <!-- <a href="<?php echo base_url()?>UserDashboard/makeappointment"> -->
+              <input type="submit" name="submit" class="submit w-25 bg-success p-1">
+              <!-- </a> -->
           </form>
-        </div>
       </div>
-          
-    </div>
-  </div>
-    <script src="<?php echo base_url('assets/js/jquery-3.3.1.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/js/popper.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/js/rome.js');?>"></script>
-    <script src="<?php echo base_url('assets/js/main.js');?>"></script>
-        </form>
-      </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Confirm</button>
       </div>
     </div>
   </div>
@@ -138,14 +120,7 @@ if(isset($_SESSION['error'])){
     </div>
     <div class="row bg-danger text-white py-2 col-12 w-100">
         <footer>
-            <div class="container">
-                <h6>Address</h6>
-                <div class="container">
-                   <div class="col-12 w-100">Email:hopedrops@gmail.com</div> 
-                   <div class="col-12 w-100">Instagram:hopedropes</div> 
-                   <div class="col-12 w-100">Twitter:hopedropes</div> 
-                </div>
-            </div>
+            
             <div class="container text-center">
             <span class="text-center">Copyright hopedropes group Rwanda Coding Academy</span>
             </div>

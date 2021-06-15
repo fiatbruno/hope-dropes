@@ -13,6 +13,7 @@ class UserDashboard extends CI_Controller{
     }
 
     public function updateprofile(){
+        // $userid =$_SESSION['user_id'];
         $username=$this->input->post('username');
         $email=$this->input->post('email');
         $password=$this->input->post('password');
@@ -21,21 +22,41 @@ class UserDashboard extends CI_Controller{
         $submit=$this->input->post('submit');
 
         if($submit){
-            $this->load->model();
-            $this->load>database();
+            // $this->load->model();
+            // $this->load>database();
 
              
             $send=$this->load->model('userupdate');  
-            $send2=$this->userupdate->updateuser($username,$email,$password,$gender,$telephone);
+            $send2=$this->userupdate->updateuser($username,$email,$password,$gender,$telephone,3);
 
             if($send2){
                 $this->load->view('userdashboard');
-                echo "successful updation";
+                $this->session->set_flashdata("message","successfully updated account");
             }
             else{
                 $this->load->view('userdashboard');
-                echo "unable to update";
+                $this->session->set_flashdata("message","unsuccessfully update account");
             }
+        }
+    }
+
+    public function makeappointment(){
+        $username=$_SESSION['username'];
+        $userid=$_SESSION['user_id'];
+        $date=$this->input->post['date'];
+
+        $this->load->database();
+        $this->load->model('appoint');
+        $send=$this->appoint->appointment($username,$date);
+        if($send){
+            $this->load->view("userdashboard");
+            $this->session->set_flashdata("message","successfully saved appointment");
+        }
+        else{
+            // $this->load->view("userdashboard");
+            $sdata['b']=$this->session->set_flashdata("message","unable to save appointment");
+            redirect('UserDashboard/displaydashboard',$sdata);
+
         }
     }
 
