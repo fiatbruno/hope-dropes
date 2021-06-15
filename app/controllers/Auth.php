@@ -143,5 +143,7 @@ class Auth extends CI_Controller{
         // Load a View
         $this->load->view('login');
     }
+
+    
     
 }
