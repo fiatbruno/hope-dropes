@@ -56,7 +56,7 @@
 					<p class=" text-secondary">Saving people's lives is something which you can provide easly. What you need to do is first the heart to give.
 						We are here to help those who are willing to donnate blood to those in need.
 					</p>
-					<p><button type="submit" class="btn-danger shadow-sm row" style="padding: 5px 20px; border-none: none">Donate</button></p>
+					<p><button type="submit" class="btn-danger shadow-sm row" style="padding: 5px 20px; border: none">Donate</button></p>
 				</div>
 			</div>
 
