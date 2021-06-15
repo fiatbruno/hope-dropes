@@ -32,16 +32,28 @@ if(isset($_SESSION['error'])){
 </head>
 <body>
     <div class="container">
-    <nav class="nav-bar">
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+    <a class="navbar-brand" href="#">
         <img src="<?php echo base_url()?>assets/images/logo.jpg" alt="" style="height:15%; width:15%;" class="d-inline-block align-text-top">
      <span class="text-center mt-5">HopeDropes</span> 
     </a>
+  <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link px-3 mx-2 active bg-secondary rounded text-white" aria-current="page" href="<?php echo base_url();?>userDashboard/displaydashboard">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3 mx-2" aria-current="page" href="<?php echo base_url();?>userDashboard/userprofile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bg-danger text-white rounded px-3 mx-2" aria-current="page" href="<?php echo base_url();?>Auth/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
-    </nav>
     </div>
 
     <div class="container my-5">
@@ -59,7 +71,7 @@ if(isset($_SESSION['error'])){
             <img class="card-img-top" src="<?php echo base_url();?>assets/images/12349205.jpg" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text">Mother's tears can't save her child, but your blood can</p>
-                <a href="<?php echo base_url();?>userDashboard/viewAppointments" class="btn btn-danger mt-5">My appointments</a>
+                <a href="<?php echo base_url();?>userDashboard/viewAppointments" class="btn btn-danger mt-4">My appointments</a>
             </div>
         </div>
         <div class="card mx-2 col-4" style="width: 18rem;">
@@ -76,7 +88,7 @@ if(isset($_SESSION['error'])){
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Make appointment</h5>
+        <h5 class="modal-title mt-5" id="exampleModalLabel">Make appointment</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -119,12 +131,12 @@ if(isset($_SESSION['error'])){
             <img class="card-img-top" src="<?php echo base_url();?>assets/images/donation.jpg" alt="Card image cap">
             <div class="card-body">
             <p class="card-text">Donate a little drops of your blood and you'll be someone's hero</p>
-                <a href="<?php echo base_url();?>userDashboard/userprofile" class="btn btn-danger mt-5 btn-center">My profile</a>
+                <a href="<?php echo base_url();?>userDashboard/userprofile" class="btn btn-danger my-4 btn-center">My profile</a>
             </div>
         </div>
        </div>
     </div>
-    <div class="row bg-danger">
+    <div class="row bg-danger text-white py-2 col-12 w-100">
         <footer>
             <div class="container">
                 <h6>Address</h6>
@@ -133,6 +145,9 @@ if(isset($_SESSION['error'])){
                    <div class="col-12 w-100">Instagram:hopedropes</div> 
                    <div class="col-12 w-100">Twitter:hopedropes</div> 
                 </div>
+            </div>
+            <div class="container text-center">
+            <span class="text-center">Copyright hopedropes group Rwanda Coding Academy</span>
             </div>
         </footer>
     </div>

@@ -6,11 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profile</title>
+    <link rel="stylesheet" href="<?php echo base_url()?>assets/style.css">
 </head>
 <body>
+    <div class="container d-flex justify-content-end">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+    <a class="navbar-brand" href="#">
+        <img src="<?php echo base_url()?>assets/images/logo.jpg" alt="" style="height:15%; width:15%;" class="d-inline-block align-text-top">
+     <span class="text-center mt-5">HopeDropes</span> 
+    </a>
+  <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link px-3 mx-2" aria-current="page" href="<?php echo base_url();?>userDashboard/displaydashboard">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active bg-secondary px-3 mx-2 rounded text-white" aria-current="page" href="<?php echo base_url();?>userDashboard/userprofile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bg-danger text-white rounded px-3 mx-2" aria-current="page" href="<?php echo base_url();?>Auth/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    </div>
     <div class="container">
-    <form action="" class="form w-75" method="post">
-    <h1 class="heading mx-5 text-center">My profile</h1>
+    <form action="" class="form w-75 m-auto bg-danger mt-3 rounded" method="post">
+    <h1 class="heading mx-5 text-center text-white">My profile</h1>
+    <img src="<?php echo base_url();?>assets/images/profile.png" style="width:80px; height:80px;" class="image m-auto" alt="">
     <div class="user">
     <?php
     // $userid=$_SESSION['user_id'];
@@ -46,7 +72,7 @@
     </div>
 
     <div class="container w-75">
-        <input type="submit" value="Update" class="bg-success text-white w-25 rounded my-3 mx-5" name="submit">
+        <input type="submit" value="Update" class="bg-success text-white w-25 rounded my-3 mx-5 p-1" name="submit">
     </div>
     </div>
     </form>

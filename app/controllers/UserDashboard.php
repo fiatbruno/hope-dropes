@@ -26,8 +26,9 @@ class UserDashboard extends CI_Controller{
 
              
             $send=$this->load->model('userupdate');  
+            $send2=$this->userupdate->updateuser($username,$email,$password,$gender,$telephone);
 
-            if($send){
+            if($send2){
                 $this->load->view('userdashboard');
                 echo "successful updation";
             }
