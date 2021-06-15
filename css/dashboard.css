@@ -42,6 +42,22 @@ a{
     color: whitesmoke;
 }
 
+.no{
+	text-decoration: none;
+}
+.delete{
+	color: red;
+}
+.update{
+	color: green;
+}
+.delete:hover{
+	color: #fff;
+}
+.update:hover{
+	color: #fff;
+}
+
 h1 {
 	padding-bottom: 2rem;
 	text-decoration: underline 8px #fd3a5c;
