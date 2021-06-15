@@ -11,13 +11,22 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
+<<<<<<< HEAD
 		"php": ">=5.3.7"
+=======
+		"php": ">=5.3.7",
+		"phpmailer/phpmailer": "^6.4"
+>>>>>>> daa7ad323398d643ac9bf4a3526a9ffb456ca8d1
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},
 	"require-dev": {
+<<<<<<< HEAD
 		"mikey179/vfsStream": "1.1.*",
+=======
+		"mikey179/vfsstream": "1.1.*",
+>>>>>>> daa7ad323398d643ac9bf4a3526a9ffb456ca8d1
 		"phpunit/phpunit": "4.* || 5.*"
 	}
 }

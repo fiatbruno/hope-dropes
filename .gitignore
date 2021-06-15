@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 
 application/cache/*
@@ -7,6 +8,20 @@ application/logs/*
 !application/logs/index.html
 
 !application/*/.htaccess
+=======
+.vscode/
+
+
+.DS_Store
+
+app/cache/*
+!app/cache/index.html
+
+app/logs/*
+!app/logs/index.html
+
+!app/*/.htaccess
+>>>>>>> daa7ad323398d643ac9bf4a3526a9ffb456ca8d1
 
 composer.lock
 
