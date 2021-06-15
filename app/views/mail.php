@@ -42,10 +42,10 @@
           <?php  
             foreach ($h->result() as $row) {  
               ?><tr>  
-                  <td><?php echo $row->email;?></td>   
+                  <td><?php echo $row->username;?></td>   
                   <td><button class="btn  btn-outline-primary">Send Mail</button></td>  
-                  <td><button class="btn  btn-outline-success">Update</button></td>
-                  <td><button class="btn  btn-outline-danger">Delete</button></td>
+                  <td><button class="btn  <?php $_SESSION['update_id'] = $row->user_id ?>btn-outline-success"><a class="no update" href="<?= base_url()?>user/update">Update</a></button></td>
+                  <td><button class="btn  <?php $_SESSION['delete_id'] = $row->user_id ?> <?php $_SESSION['delete'] = TRUE ?>btn-outline-danger"><a class="no delete" href="<?= base_url()?>user/delete">Delete</button></td>
                 </tr>  
               <?php } ?>  
         </tbody>  

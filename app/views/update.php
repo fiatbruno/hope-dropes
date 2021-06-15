@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 
 
-    <title>Register Page</title>
+    <title>Update Page</title>
     
   </head>
   <body class="">
@@ -22,9 +22,8 @@
     <h1 class="head">Hope Drops</h1>
 
     <div class="form col-lg-4">
-        <h1>Register Page!</h1>
+        <h1>Update Page!</h1>
         <div>
-            <p>Already have an account? <a href="login">Login</a></p>
         </div>
         <p>Fill out the credentials</p>
         <?php if (isset($_SESSION['success'])) { ?>
@@ -39,6 +38,10 @@
         } ?>
         <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
         <form action="" method="POST">
+            <div class="form-group invisible">
+                <label for="update_id" class="label-default">Id</label>
+                <input name="update_id" class="form-control" id="update_id" type="number" value="<?= $_SESSION['update_id'] ?>" readonly>
+            </div>
             <div class="form-group">
                 <label for="username" class="label-default">Username:</label>
                 <input name="username" class="form-control" id="username" type="text">
@@ -55,10 +58,6 @@
                 <label for="password2" class="label-default">Confirm Password:</label>
                 <input name="password2" class="form-control" id="password2" type="password">
             </div>
-            <!-- <div class="form-group">
-                <label for="role" class="label-default">Role:</label>
-                <input name="role" class="form-control" id="role" type="text">
-            </div> -->
             <div class="form-group">
                 <label for="gender" class="label-default">Gender:</label>
                 <select name="gender" class="form-select" id="gender">
@@ -71,7 +70,7 @@
                 <input name="telephone" class="form-control" id="telephone" type="tel">
             </div>
             <div>
-                <button name="register" class="btn btn-blood p-2">Register</button>
+                <button name="update" class="btn btn-blood p-2">Update</button>
             </div>
         </form>
     </div>

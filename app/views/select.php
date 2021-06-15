@@ -31,6 +31,8 @@
     <h1>List of Blood Donors</h1>
     <a href="<?php echo base_url()?>dashboard/index">Dashboard</a>
     <br><br>
+    <a href="<?php echo base_url(); ?>createPdf/addToPdf">Location PDF</a>
+    <br><br>
     <div class="container-table table-responsive">
         <table class="table table-striped table-hover table-secondary table-bordered text-nowrap w-100" id="table_example">
             <thead>

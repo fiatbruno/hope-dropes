@@ -19,11 +19,11 @@ class Auth extends CI_Controller{
             $this->form_validation->set_rules('password','Password','required|min_length[5]');
             $this->form_validation->set_rules('password2','Confirm Password','required|min_length[5]|matches[password]');
             $this->form_validation->set_rules('telephone','Telephone','required|min_length[5]');
-            $this->form_validation->set_rules('role','Role','required');
+            //! Role
+            // $this->form_validation->set_rules('role','Role','required');
             
             if ($this->form_validation->run() == TRUE) {
-                // echo "Form Validated";
-                
+                //! Role
                 // Add User to Database
 
                 $data = array(
@@ -35,7 +35,7 @@ class Auth extends CI_Controller{
                     "telephone"=>$_POST['telephone'],
                 );
 
-                $isRole = $_POST['role'];
+                // $isRole = $_POST['role'];
 
                 $this->db->insert('users',$data);
 
@@ -48,9 +48,9 @@ class Auth extends CI_Controller{
                 $role = array(
                     "user_id"=> $user->user_id,
                     "username"=> $user->username,
-                    "role"=> $isRole,
+                    //! Role
+                //     "role"=> $isRole,
                 );
-
                 $this->db->insert('roles',$role);
 
                 $this->session->set_flashdata("success", "Your account has been registered. You can login now");
@@ -130,7 +130,7 @@ class Auth extends CI_Controller{
                     $this->db->insert('location',$data);
                     
                     // Redirect to profile page
-                    redirect('dashboard/index', 'refresh');
+                    redirect('dashboard/index');
 
                 } else {
 
@@ -143,5 +143,7 @@ class Auth extends CI_Controller{
         // Load a View
         $this->load->view('login');
     }
+
+    
     
 }
