@@ -1,0 +1,172 @@
+.form {
+	margin: auto;
+	border: 1px solid black;
+	padding: 5rem;
+	border-radius: 3rem;
+	box-shadow: 20px 20px #212529;
+	background-color: #fff;
+}
+html{
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
+}
+.btn-blood {
+	margin: 12px 0;
+	width: 40%;
+	background-color: #fd3a5c;
+	color: #fff;
+}
+.btn-blood:hover {
+	background-color: #fff;
+	color: #fd3a5c;
+	border: 1px solid #fd3a5c;
+}
+body {
+	font-family: "Poppins";
+	font-weight: 900;
+	background: #dc1c13; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#f07470,
+		#dc1c13
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#f07470,
+		#dc1c13
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+a{
+    text-decoration: underline 5px;
+    color: whitesmoke;
+}
+
+.no{
+	text-decoration: none;
+}
+.delete{
+	color: red;
+}
+.update{
+	color: green;
+}
+.delete:hover{
+	color: #fff;
+}
+.update:hover{
+	color: #fff;
+}
+
+h1 {
+	padding-bottom: 2rem;
+	text-decoration: underline 8px #fd3a5c;
+}
+.head {
+	display: flex;
+	justify-content: center;
+	text-decoration: underline 10px #fd3a5c;
+	align-items: center;
+	margin-top: 3rem;
+	text-transform: uppercase;
+}
+
+.btn-circle {
+	border: 3px solid #000;
+	border-radius: 10px;
+	background: #fd3a5c;
+	margin-bottom: 1rem;
+	outline: none;
+}
+.btn-circle:hover {
+	border: 3px solid #fd3a5c;
+	color: #fd3a5c;
+	background: #fff;
+}
+.blood-group {
+	display: flex;
+}
+.grouper {
+	padding: 2rem;
+}
+
+.navbar{
+    background: #fff;
+    margin: auto;
+	border-bottom: 1px solid black;
+}
+.card{
+    margin: 0 1rem;
+	border: 1px solid black;
+	padding: 0 1rem;
+	border-radius: 3rem;
+	box-shadow: 20px 20px #212529;
+	background-color: #fff;
+}
+.beirut{
+    padding: 0;
+    margin: 0;
+    width: 20rem;
+    height: 15rem;
+    border: 1px solid black;
+	/* border-radius: 3rem; */
+	box-shadow: 20px 20px #212529;
+	/* background-color: #fff; */
+    /* background: green; */
+    margin: 1rem 4rem 1rem 0;
+    background: url(../assets/images/beirut.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.line{
+    margin-left: 5rem;
+}
+.flex {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;    
+}
+.bar {
+    height: 100vh;
+    z-index: 2;
+    margin: 0;
+    padding: 7rem 1rem 1rem 0;
+    z-index: 99;
+	border: 1px solid black;
+	padding: 0 1rem;
+	box-shadow: 10px 0px #212529;
+	background-color: #fff;
+}
+ul.text-bar{
+    list-style: none;
+}
+li{
+    margin-top: 2rem;
+
+}
+
+.text{
+    /* text-align: center; */
+    margin-left: 5rem;
+}
+
+.nav-link{
+    text-decoration: underline;
+}
+.container-table{
+    margin: 0 auto;
+}
+@media (max-width: 767.98px) {
+    .bar {
+        top: 11.5rem;
+        padding: 0;
+    }
+}
+@media (min-width: 767.98px) {
+    .navbar {
+        top: 0;
+        position: sticky;
+        z-index: 999;
+    }
+}
