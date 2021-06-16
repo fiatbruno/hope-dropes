@@ -152,3 +152,15 @@ li{
         z-index: 999;
     }
 }
+
+/* --------- Dashboard responsiveness ---------- */
+@media only screen and (max-width: 680px){
+	.row.w-100.sideNav {
+		display: block;
+		background-color: black;
+	}
+	.position-fixed {
+		position: relative;
+		width: 30px;
+	}
+}

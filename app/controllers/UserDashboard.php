@@ -5,7 +5,12 @@ class UserDashboard extends CI_Controller{
     //     parent ::__construct;
     // }
     function displaydashboard(){
-        $this->load->view('userdashboard');
+        $username = $_SESSION["username"];
+        $query = $this->db->query("SELECT * FROM appointments where username = '$username'");
+        $query = $query -> result();
+        
+
+        $this->load->view('userdashboard', ['data'=>$query]);
     }
 
     function userprofile(){
@@ -26,9 +31,6 @@ class UserDashboard extends CI_Controller{
         $submit=$this->input->post('submit');
 
         if($submit){
-            // $this->load->model();
-            // $this->load>database();
-
              
             $send=$this->load->model('userupdate');  
             $send2=$this->userupdate->updateuser($username,$email,$password,$gender,$telephone,$userid);
@@ -45,25 +47,62 @@ class UserDashboard extends CI_Controller{
     }
 
     public function makeappointment(){
-        $username=$_SESSION['username'];
+        $username= $_SESSION['username'];
         $this->form_validation->set_rules('date','date','required');
-        $date=$this->input->post('date');
+        $date = $this->input->post('date');
 
-        $this->load->database();
         $this->load->model('appoint');
-        $send=$this->appoint->appointment($username,$date);
+        $send = $this->appoint->appointment($username,$date);
+
+        $data = $this->db->query("SELECT * from appointments where username = '$username'");
+        $data->result();
+        
+        
         if($send){
-            $this->load->view("userdashboard");
+            $this->load->view("userdashboard", ['data'=>$data, 'save'=>$send]);
             $this->session->set_flashdata("message","successfully saved appointment");
         }
         else{
             // $this->load->view("userdashboard");
-            $sdata['b']=$this->session->set_flashdata("message","unable to save appointment");
-            redirect('UserDashboard/displaydashboard',$sdata);
+            $sdata['b']= $this->session->set_flashdata("message","unable to save appointment");
+            redirect('UserDashboard/displaydashboard',[$sdata, $data]);
 
         }
     }
 
+    public function updateForm(){
+        $id = $this->input->get("id");
+        $query = $this->db->query("SELECT * from appointments where appointId = '$id'");
+        $query->result();
+        if($query->result()){
+            $this->load->view("updateEventForm");
+        }
+
+    }
+    
+    public function updateAppointment(){
+        $id = $this->input->post("id");
+        $newDate = $this->input->post("newDate");
+        $query = $this->db->query("UPDATE FROM appointments set data = '$newDate' where appointId = '$id'");
+        if($query->result){
+            $this->load->view("UserDashboard/displaydashboard");
+        }
+    }
+
+    public function deleteAppointment(){
+        $id = $this->input->get("id");
+        $username = $_SESSION['username'];
+        $query = $this->db->query("DELETE from appointments where appointId = '$id' AND username='$username'");
+
+        $data = $this->db->query("SELECT * from appointments where username = '$username'");
+        $data->result();
+        
+        if($query){
+            redirect('UserDashboard/displaydashboard',$data);
+        }else{
+            echo "Unable to delete";
+        }
+    }
     
 }
 
