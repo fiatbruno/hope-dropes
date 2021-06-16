@@ -11,7 +11,7 @@
 
     
     <!-- My Style Sheet -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/style.css">
 
 
     <title>Register Page</title>
@@ -24,7 +24,7 @@
     <div class="form col-lg-4">
         <h1>Register Page!</h1>
         <div>
-            <p>Already have an account? <a href="login">Login</a></p>
+            <p>Already have an account? <a href="<?php echo base_url()?>auth/login">Login</a></p>
         </div>
         <p>Fill out the credentials</p>
         <?php if (isset($_SESSION['success'])) { ?>
@@ -70,21 +70,62 @@
                 <label for="telephone" class="label-default">Telephone:</label>
                 <input name="telephone" class="form-control" id="telephone" type="tel">
             </div>
+        
+            <div class="form-group">
+                <label for="district" class="form-label">District Name</label>
+                <select class="form-select" aria-label="Default select example" name="districtId" id="district" onchange="get_sectors(event)" required>
+                    <option>--- Select district Name</option>
+                    <?php
+                        if(!empty($table)){
+                            foreach($table as $district){ ?>
+                                <option value="<?php echo $district->districtId?>"><?php echo $district->districtName ?></option>
+                            <?php }
+                        };
+                    ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="district" class="form-label">Sector Name</label>
+                <select aria-label="Default select example" name="sectorId" id="sector" class="sectors form-select" required>
+                    <option>--- Select sector Name ---</option>
+                    <?php
+                        if(!empty($sectors)){
+                            foreach($sectors as $sector)
+                            {
+                                $district_id = $sector->districtId ?>
+                                <option value="<?php echo $sector->sectorId?>" class="<?=$district_id ?> allSectors"><?php echo $sector->sectorName?></option>
+                            <?php }
+                        }else{
+                                echo "<option>nothing</option>";
+                        }
+                    ?>
+                </select>
+            </div>
             <div>
                 <button name="register" class="btn btn-blood p-2">Register</button>
             </div>
         </form>
     </div>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
+    <script>
+        function get_sectors(ev){
+            let selector = document.getElementsByClassName('sectors')[0];
+            selector.value = "";
+            let allSectors = document.getElementsByClassName("allSectors");
+            id = ev.target.value 
+            for(let j=0; j<allSectors.length; j++){
+                allSectors[j].style.display = "none";
+            }
+    // 
+            for(let i=0; i<allSectors.length; i++){
+                if(allSectors[i].className.includes(id)){
+                    allSectors[i].style.display = "block";
+                }
+            }
+        }
+  </script>
+  
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    -->
   </body>
 </html>

@@ -12,6 +12,14 @@ class Auth extends CI_Controller{
     //     $this->load->view('register', $data, TRUE);
     // }
     public function register(){
+        // selecting all districts
+        $query = $this->db->query("SELECT * from districts");
+        $table = $query->result();
+
+        // selecting sectors
+        $sector = $this->db->query("SELECT * from sectors");
+        $sectors = $sector->result();
+
         if (isset($_POST['register'])) {
             
             $this->form_validation->set_rules('username','Username','required');
@@ -19,7 +27,6 @@ class Auth extends CI_Controller{
             $this->form_validation->set_rules('password','Password','required|min_length[5]');
             $this->form_validation->set_rules('password2','Confirm Password','required|min_length[5]|matches[password]');
             $this->form_validation->set_rules('telephone','Telephone','required|min_length[5]');
-            //! Role
             // $this->form_validation->set_rules('role','Role','required');
             
             if ($this->form_validation->run() == TRUE) {
@@ -31,6 +38,8 @@ class Auth extends CI_Controller{
                     "email"=>$_POST['email'],
                     "password"=>md5($_POST['password']),
                     "gender"=>$_POST['gender'],
+                    "district"=>$_POST['districtId'], 
+                    "sector"=>$_POST['sectorId'],
                     "created_date"=>date("Y-m-d"),
                     "telephone"=>$_POST['telephone'],
                 );
@@ -61,8 +70,9 @@ class Auth extends CI_Controller{
             
         }
         
-        // Load a View
-        $this->load->view('register');
+        // Load view
+        $this->load->view('register', ['table' => $table, 'sectors'=>$sectors]);
+        
     }
 
     public function logout(){
