@@ -66,7 +66,7 @@
     </div>
     <div class="container w-75">
         <label for="telephone" class="col-12 text-white">Telephone</label>
-        <input type="text" name="telephone" class="form-control" value="<?php echo $row['telephone'];?>">
+        <input type="number" name="telephone" class="form-control" value="<?php echo $row['telephone'];?>">
     </div>
 
     <div class="container w-75">

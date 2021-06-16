@@ -13,7 +13,11 @@ class UserDashboard extends CI_Controller{
     }
 
     public function updateprofile(){
-        // $userid =$_SESSION['user_id'];
+        $userid =$_SESSION['user_id'];
+        $this->form_validation->set_rules('username','Username','required');
+        $this->form_validation->set_rules('password','Password','required|min_length[5]');
+        $this->form_validation->set_rules('email','Email','required');
+        $this->form_validation->set_rules('telephone','telephone','required');
         $username=$this->input->post('username');
         $email=$this->input->post('email');
         $password=$this->input->post('password');
@@ -27,7 +31,7 @@ class UserDashboard extends CI_Controller{
 
              
             $send=$this->load->model('userupdate');  
-            $send2=$this->userupdate->updateuser($username,$email,$password,$gender,$telephone,3);
+            $send2=$this->userupdate->updateuser($username,$email,$password,$gender,$telephone,$userid);
 
             if($send2){
                 $this->load->view('userdashboard');
@@ -43,6 +47,7 @@ class UserDashboard extends CI_Controller{
     public function makeappointment(){
         $username=$_SESSION['username'];
         $userid=$_SESSION['user_id'];
+        $this->form_validation->set_rules('date','date','required');
         $date=$this->input->post['date'];
 
         $this->load->database();
