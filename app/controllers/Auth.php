@@ -139,8 +139,14 @@ class Auth extends CI_Controller{
 
                     $this->db->insert('location',$data);
                     
-                    // Redirect to profile page
-                    redirect('dashboard/index');
+                    
+                    if ($_SESSION['admin'] == true) {
+                        // Redirect to profile page
+                        redirect('dashboard/index');
+                    }
+                    else {
+                        redirect('userdashboard/displaydashboard');
+                    }
 
                 } else {
 
