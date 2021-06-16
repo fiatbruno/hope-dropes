@@ -43,7 +43,7 @@
                 <p>Don't have an account? <a href="register">Register</a></p>
             </div>
             <div>
-                <p>Forgot password? Reset <a href="#">Here!</a></p>
+                <p>Forgot password? Reset <a href="<?php echo base_url()?>auth/reset">Here!</a></p>
             </div>
             <div>
                 <button name="login" class="btn btn-blood p-2">Login</button>

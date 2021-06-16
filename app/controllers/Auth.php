@@ -117,7 +117,7 @@ class Auth extends CI_Controller{
 
 
                     $_SESSION['user_logged'] = TRUE;
-                    ($role->role == "admin") ? $_SESSION['admin']= TRUE : $_SESSION['admin'] = FALSE;
+                    ($role->role == "admin") ? $_SESSION['admin'] = TRUE : $_SESSION['admin'] = FALSE;
                     $_SESSION['username'] = $user->username;
                     $_SESSION['user_id'] = $user->user_id;
                     $_SESSION['email'] = $user->email;
@@ -154,6 +154,83 @@ class Auth extends CI_Controller{
         $this->load->view('login');
     }
 
+    public function reset(){
+        $this->load->view("reset");
+    }
+
+    public function send_email(){
+        $from_email = "eumuhoza83@gmail.com";
+        $to_email = $this->input->post('email');
+
+        $this->db->select("*");
+        $this->db->from("users");
+        $this->db->where('email', $to_email);
+        $roleQuery = $this->db->get();
+
+        $user = $roleQuery->num_rows();
     
+        if($user>0){
+            //SMTP & mail configuration
+            $this->load->library('email'); 
+            $config = array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.gmail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'eumuhoza83@gmail.com',
+                'smtp_pass' => 'sawasawa04!',
+                'mailtype' => 'html',
+                'charset' => 'iso-8859-1'
+            );
+            $this->email->initialize($config);
+            $this->email->set_newline("\r\n");
+        
+            //Email content
+            $htmlContent = '<h1>Password Reset</h1>';
+            $htmlContent .= '<p>Follow the given link to change your password</p>';
+            $htmlContent .= "<p>If you don't know about us, simply ignore this.</p>";
+            $htmlContent .="<a href='http://localhost/hope-drops/Auth/reset_Page?email=".$to_email."'>Reset password</a>";
+        
+            $this->email->to($to_email);
+            $this->email->from("eumuhoza83@gmail.com", 'Hope blood');
+            $this->email->subject('Password Reset');
+            $this->email->message($htmlContent);
+        
+            if($this->email->send()){
+                $this->session->set_flashdata("email", "Reset password link sent on email");
+                $this->load->view('reset');
+            }else{
+                $this->session->set_flashdata("email", "Unable to send");
+                // show_error($this->email->print_debugger());
+                // $this->load->view('email_sent');
+                $this->load->view('reset');
+            }
+        }else{
+            $this->session->set_flashdata("email_found", "Person with same email not found");
+            $this->load->view('reset');
+        }
+    }
     
+    public function reset_Page(){
+        $this->load->view("changePassword");
+    }
+
+    public function changePassword(){
+        $password = $this->input->post("password");
+        $confPass = $this->input->post("confPassword");
+        $email = $this->input->post("email");
+
+        if(!strcmp($password, $confPass)){
+            // hashin password
+            $hashedPass = md5($password);
+
+            $query = $this->db->query("UPDATE users set password = '".$hashedPass ."' where email = '".$email."'");
+            
+            if($query){
+                echo "Password Changed successfully!";
+                echo "<br><a href='".base_url()."Auth/login'>Login</a>";
+            }
+        }else{
+            ECHO "Password and confirm passowrd must be equal";
+        }
+    }
 }
