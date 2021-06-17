@@ -6,11 +6,12 @@ class UserDashboard extends CI_Controller{
     // }
     function displaydashboard(){
         $username = $_SESSION["username"];
+        $id = $_SESSION['user_id'];
 
         $query = $this->db->query("SELECT * FROM appointments where username = '$username'");
         $query = $query->result();
         
-        $bloodExist = $this->db->query("SELECT * from blood b inner join roles r on b.user_id = r.user_id");
+        $bloodExist = $this->db->query("SELECT * from blood b inner join roles r on b.user_id = r.user_id where b.user_id=$id");
         $bloodExist = $bloodExist -> result();
         
         $this->load->view('userdashboard', ['data'=>$query, 'blood'=>$bloodExist]);
@@ -76,9 +77,9 @@ class UserDashboard extends CI_Controller{
     public function updateForm(){
         $id = $this->input->get("id");
         $query = $this->db->query("SELECT * from appointments where appointId = '$id'");
-        $query->result();
+        $data = $query->result();
         if($query->result()){
-            $this->load->view("updateEventForm");
+            $this->load->view("updateEventForm", ['data'=>$data]);
         }
 
     }
@@ -86,9 +87,10 @@ class UserDashboard extends CI_Controller{
     public function updateAppointment(){
         $id = $this->input->post("id");
         $newDate = $this->input->post("newDate");
-        $query = $this->db->query("UPDATE FROM appointments set data = '$newDate' where appointId = '$id'");
-        if($query->result){
-            $this->load->view("UserDashboard/displaydashboard");
+        $query = $this->db->query("UPDATE appointments set data = '$newDate' where appointId = $id");
+        
+        if($query){
+            redirect("UserDashboard/displaydashboard");
         }
     }
 
@@ -105,10 +107,6 @@ class UserDashboard extends CI_Controller{
         }else{
             echo "Unable to delete";
         }
-    }
-
-    public function CheckIfType(){
-        
     }
     
 }

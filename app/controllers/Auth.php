@@ -106,7 +106,7 @@ class Auth extends CI_Controller{
         unset($_SESSION);
         session_destroy();
         $_SESSION['user_logged'] = FALSE;
-        redirect("auth/login", "refresh");  
+        redirect("auth/login", "refresh");
     }
 
     public function login(){

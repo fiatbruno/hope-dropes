@@ -19,6 +19,15 @@
 
   <link rel="stylesheet" href="<?php base_url('assets/calender-14/css/rome.css'); ?>">
 
+  <link rel="stylesheet" href="  https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="<?php base_url(); ?>assets/calender-14/css/bootstrap.min.css">
 
@@ -98,7 +107,7 @@
           <button class="nav-link p-3 active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Dashboard</button>
           <button class="nav-link p-3" id="v-pills-blood-tab" data-bs-toggle="pill" data-bs-target="#v-pills-blood" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Blood type</button>
           <button class="nav-link p-3" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Donate</button>
-          <button class="nav-link p-3" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Events</button>
+          <button class="nav-link p-3" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Appointments</button>
           <button class="nav-link p-3" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
         </div>
       </div>
@@ -133,21 +142,41 @@
 
         <!-- Add blood type -->
         <div class="tab-pane fade" id="v-pills-blood" role="tabpanel" aria-labelledby="v-pills-blood-tab">
-          <div class="row w-100 mx-2">
-            <div class="card col-8" style="border: none;">
-              <img class="card-img-top h-75" src="<?php echo base_url(); ?>assets/images/image-asset.gif" alt="Card image cap">
-              <div class="card-body">
-                <h3>Add blood group</h3>
-                <p class="card-text">Add your blood group so that we can know which blood type group you want to donate!</p>
+
+          <?php foreach ($blood as $value) {
+            if ($value) {
+          ?>
+              <div class="row w-100 mx-2">
+                <div class="card col-md-8 p-3" style="border: none;">
+                  <img class="card-img-top h-75" src="<?php echo base_url(); ?>assets/images/image-asset.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h3>Your blood group is <?= $value->bloodgroup ?> <?= $value->bloodgroupsign ?></h3>
+                    <p class="card-text">Since you arleady have blood group so you can donate blood if you want to!</p>
+                  </div>
+                </div>
+                <div class="card col-md-4 justify-content-center"style="border: none;">
+                <p>You have full access to change your blood type maybe if you are mistaken!</p>
+                  <a href="<?php echo base_url(); ?>blood/chooseBlood" class="btn btn-danger mt-2">Change blood group <i class='fas fa-angle-double-right ' style='font-size:20px;margin-left: 15px;'></i></a>
+                </div>
               </div>
-              <a href="<?php echo base_url(); ?>blood/chooseBlood" class="btn btn-danger mt-2">Add blood type <i class='fas fa-angle-double-right ' style='font-size:20px;margin-left: 15px;'></i></a>
-            </div>
-          </div>
+            <?php
+            } else { ?>
+              <div class="row w-100 mx-2 justify-content-center">
+                <div class="card col-md-8 justify-content-center" style="border: none;">
+                  <img class="card-img-top h-75" src="<?php echo base_url(); ?>assets/images/image-asset.gif" alt="Card image cap">
+                  <div class="card-body">
+                    <h3>Add blood group</h3>
+                    <p class="card-text">Add your blood group so that we can know which blood type group you want to donate!</p>
+                  </div>
+                  <a href="<?php echo base_url(); ?>blood/chooseBlood" class="btn btn-danger mt-2">Add blood type <i class='fas fa-angle-double-right ' style='font-size:20px;margin-left: 15px;'></i></a>
+                </div>
+              </div>
+            <?php }  } ?>
         </div>
 
         <!-- Make appointments -->
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-          <div class="row w-100 mx-2">
+          <div class="row w-100 mx-2 justify-content-center">
             <div class="card col-7" style="border: none;">
               <img class="card-img-top" src="<?php echo base_url(); ?>assets/images/12349205.jpg" alt="Card image cap">
               <div class="card-body">
@@ -160,7 +189,7 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">New Appointment</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -175,22 +204,22 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <?php 
+                        <?php
                         $found = 0;
-                        foreach($blood as $row){
-                          if($row->user_id == $_SESSION['user_id']){
-                              $found += 1;
-                          } 
+                        foreach ($blood as $row) {
+                          if ($row->user_id == $_SESSION['user_id']) {
+                            $found += 1;
+                          }
                         }
 
-                        if($found==0){
+                        if ($found == 0) {
                           echo "<p>Please first add blood group!<p>";
                           echo "<button type='submit' class='btn btn-danger' disabled>Send appointment</button>";
-                        }else{
+                        } else {
                           echo "<button type='submit' class='btn btn-danger'>Send appointment</button>";
                         }
                         ?>
-                        
+
                       </div>
                     </form>
                   </div>
@@ -201,8 +230,9 @@
         </div>
 
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-          <div class="table table-responsive shadow-sm">
-            <table class="table">
+          <div class="table-responsive shadow-sm p-4">
+            <h2 class="m-2 text-center">All appointments</h2>
+            <table class="table" id="opps_table">
               <thead class="table-dark">
                 <tr>
                   <th>No</th>
@@ -216,15 +246,15 @@
                 <?php
                 $n = 1;
                 if ($data) {
-                  foreach ($data as $row) { 
+                  foreach ($data as $row) {
                     $id = $row->appointId;
-                    ?>
+                ?>
                     <tr>
                       <td><?= $n ?></td>
                       <td><?= $row->data ?></td>
                       <td><?= $row->addedTime ?></td>
-                      <td><a href="<?php echo base_url()?>UserDashboard/updateForm?id=<?= $id ?>">Update</a></td>
-                      <td><a href="<?php echo base_url()?>UserDashboard/deleteAppointment?id=<?=$id ?>">Delete</a></td>
+                      <td><a href="<?php echo base_url() ?>UserDashboard/updateForm?id=<?= $id ?>">Update</a></td>
+                      <td><a href="<?php echo base_url() ?>UserDashboard/deleteAppointment?id=<?= $id ?>">Delete</a></td>
                     </tr>
                     <?php $n += 1 ?>
                   <?php  }
@@ -262,5 +292,11 @@
   </footer>
 
 </body>
-
+<script>
+        $(document).ready(function() {
+          $('#opps_table').DataTable({
+            // "scrollX": true
+          });
+        });
+      </script>
 </html>

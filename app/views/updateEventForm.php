@@ -38,11 +38,10 @@
             </div>
             <div class="mb-3">
                 <label for="date">Update date</label>
-                <input type="date" class="form-control" name="date" id="date" value="<??>">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger">Send appointment</button>
+                <?php foreach($data as $value){?>
+                <input type="text" value="<?=$value->appointId?>" name="id" hidden>
+                <input type="date" class="form-control" name="newDate" id="date" value="<?=$value->data?>">
+                <?php }?>
             </div>
             <div>
                 <button name="submit-blood-group" class="btn btn-blood p-2">Update</button>
