@@ -38,6 +38,11 @@
         <?php
         } ?>
         <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
+        <?php 
+        if($this->session->flashdata("user_exist")){
+            echo "<div class='alert alert-danger'>".$this->session->flashdata("user_exist")."</div>";
+        }
+        ?>
         <form action="" method="POST">
             <div class="form-group">
                 <label for="username" class="label-default">Username:</label>
@@ -55,13 +60,10 @@
                 <label for="password2" class="label-default">Confirm Password:</label>
                 <input name="password2" class="form-control" id="password2" type="password">
             </div>
-            <!-- <div class="form-group">
-                <label for="role" class="label-default">Role:</label>
-                <input name="role" class="form-control" id="role" type="text">
-            </div> -->
             <div class="form-group">
                 <label for="gender" class="label-default">Gender:</label>
                 <select name="gender" class="form-select" id="gender">
+                
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
@@ -101,6 +103,8 @@
                     ?>
                 </select>
             </div>
+                <input name="role" class="form-control" id="role" type="text" value="donor" hidden>
+            
             <div>
                 <button name="register" class="btn btn-blood p-2">Register</button>
             </div>

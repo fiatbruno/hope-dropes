@@ -20,24 +20,30 @@
     
     <div class="form col-lg-4">
         <h1>Profile Page!</h1>
+        
+        <?php foreach($role as $value){
+          if($value->role == 'donor'){
+            echo "<a href='".base_url()."UserDashboard/displaydashboard'>Home</a>";
+          }else{
+            echo "<a href='".base_url()."dashboard/index'>Home</a>";
+          }
+        }?>
+        <br><br>
+        <a href="<?php echo base_url(); ?>User/updateForm">Update Profile</a>
+        <br><br>
         <?php if (isset($_SESSION['success'])) {?>
             <div class="alert alert-success"><?php echo $_SESSION["success"];?></div>
-        <?php
-        }?>
-        <?php if (isset($_SESSION['error'])) {?>
+        <?php } 
+        if (isset($_SESSION['error'])) { ?>
             <div class="alert alert-danger"><?php echo $_SESSION["error"];?></div>
-        <?php
-        }?>
-        YOO, <?php echo $_SESSION['username']; ?>
-        
-        <br><br>
-        <a href="<?php echo base_url(); ?>auth/logout">Log Out</a>
-        <br><br>
-        <a href="<?php echo base_url(); ?>blood/chooseBlood">Blood Type</a>
-        <br><br>
-        <a href="<?php echo base_url(); ?>reset/send_mail">Reset Password</a>
-        <br><br>
-        <a href="<?php echo base_url(); ?>UserDashboard/displaydashboard">Dashboard</a>
+        <?php }
+        foreach($user as $row){
+          echo "<h4 class='mb-3'>Hi, ".$row->username."</h4>";
+          echo "<p>".$row->gender."</p>";
+          echo "<p>".$row->telephone."</p>";
+          echo "<p>".$row->email."</p>";
+        }
+        ?>
         
     </div>
 

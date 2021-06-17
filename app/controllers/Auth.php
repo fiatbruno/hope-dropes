@@ -5,12 +5,7 @@ class Auth extends CI_Controller{
     function __construct(){
         parent::__construct();
     }
-    // ! AJAX
-    // public function getDistricts(){
-    //     $this->load->model('location');
-    //     $data = $this->location->getDistricts($_POST['provinceId']);
-    //     $this->load->view('register', $data, TRUE);
-    // }
+
     public function register(){
         // selecting all districts
         $query = $this->db->query("SELECT * from districts");
@@ -21,13 +16,14 @@ class Auth extends CI_Controller{
         $sectors = $sector->result();
 
         if (isset($_POST['register'])) {
-            
             $this->form_validation->set_rules('username','Username','required');
             $this->form_validation->set_rules('email','Email','required');
             $this->form_validation->set_rules('password','Password','required|min_length[5]');
             $this->form_validation->set_rules('password2','Confirm Password','required|min_length[5]|matches[password]');
             $this->form_validation->set_rules('telephone','Telephone','required|min_length[5]');
-            // $this->form_validation->set_rules('role','Role','required');
+            $this->form_validation->set_rules('role','Role','required');
+            $this->form_validation->set_rules('districtId','District','required');
+            $this->form_validation->set_rules('sectorId','Sector','required');
             
             if ($this->form_validation->run() == TRUE) {
                 //! Role
@@ -45,26 +41,57 @@ class Auth extends CI_Controller{
                 );
 
                 // $isRole = $_POST['role'];
+                $user_input = $data["username"];
+                $email_input = $data["email"];
+                $seeQuery = $this->db->query("SELECT * from users where username ='$user_input' OR email = '$email_input'");
+                $num = $seeQuery->num_rows();
+                echo $num;
+                if($num>0){
+                    $this->session->set_flashdata("user_exist", "User with same email or username already exist!");
+                }else{
+                    $this->db->insert('users',$data);
 
-                $this->db->insert('users',$data);
+                    $query = $this->db->query("SELECT * FROM users where username='$user_input' AND email='$email_input'");
+                    $user = $query->row();
+    
+                    $roleName = $this->input->post("role");
+    
+                    $role = array(
+                        "user_id"=> $user->user_id,
+                        "username"=> $user_input,
+                        "role"=> $roleName,
+                    );
 
-                $this->db->select("*");
-                $this->db->from("users");
-                $this->db->where($data);
-                $query = $this->db->get();
-                $user = $query->row();
+                    $this->db->insert('roles',$role);
+                    // $query = $this->db->query("SELECT * FROM users where username='$user_input' AND email='$email_input'");
+                    // $user = $query->row();
+    
+                    $_SESSION['user_logged'] = TRUE;
+                    // ($role->role == "admin") ? $_SESSION['admin'] = TRUE : $_SESSION['admin'] = FALSE;
+                    $_SESSION['username'] = $user_input;
+                    $_SESSION['user_id'] = $user->user_id;
+                    $_SESSION['email'] = $email_input;
+                    
+                    
+                    $getloc = json_decode(file_get_contents("http://ipinfo.io/"));
+                    $coordinates = explode(",", $getloc->loc);
 
-                $role = array(
-                    "user_id"=> $user->user_id,
-                    "username"=> $user->username,
-                    //! Role
-                //     "role"=> $isRole,
-                );
-                $this->db->insert('roles',$role);
+                    $data = array(
+                        "user_id"=>$user->user_id,
+                        "ip"=>$_SERVER['REMOTE_ADDR'],
+                        "city"=> $getloc->city,
+                        "region"=> $getloc->region,
+                        "country"=> $getloc->country,
+                        "latitude"=> $coordinates[0],
+                        "longitude"=>$coordinates[1],
+                        "postal"=>  ($getloc->postal == NULL) ? 0 : $getloc->postal,
+                        "timezone"=> $getloc->timezone,
+                    );
 
-                $this->session->set_flashdata("success", "Your account has been registered. You can login now");
-                redirect("auth/login", "refresh");
-                
+                    $this->db->insert('location',$data);
+                    
+                    redirect('userdashboard/displaydashboard');
+                }
                 
             }
             
@@ -78,7 +105,8 @@ class Auth extends CI_Controller{
     public function logout(){
         unset($_SESSION);
         session_destroy();
-        redirect("auth/login", "refresh");
+        $_SESSION['user_logged'] = FALSE;
+        redirect("auth/login", "refresh");  
     }
 
     public function login(){

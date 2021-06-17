@@ -1,5 +1,5 @@
 <?php  
-   class Mailing extends CI_Model {  
+   class Donors extends CI_Model {  
       function __construct()  
       {  
          // Call the Model constructor  
@@ -7,8 +7,8 @@
       }  
       public function select()  
       {  
-         $query = $this->db->query("SELECT * from appointments a inner join users u on a.username = u.username");
+         $query = $this->db->query("SELECT username,bloodgroup,bloodgroupsign,create_date FROM blood b INNER JOIN users u ON b.user_id=u.user_id");
          return $query;  
       }  
    }  
-?> 
+?>

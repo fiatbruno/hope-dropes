@@ -6,11 +6,14 @@ class UserDashboard extends CI_Controller{
     // }
     function displaydashboard(){
         $username = $_SESSION["username"];
-        $query = $this->db->query("SELECT * FROM appointments where username = '$username'");
-        $query = $query -> result();
-        
 
-        $this->load->view('userdashboard', ['data'=>$query]);
+        $query = $this->db->query("SELECT * FROM appointments where username = '$username'");
+        $query = $query->result();
+        
+        $bloodExist = $this->db->query("SELECT * from blood b inner join roles r on b.user_id = r.user_id");
+        $bloodExist = $bloodExist -> result();
+        
+        $this->load->view('userdashboard', ['data'=>$query, 'blood'=>$bloodExist]);
     }
 
     function userprofile(){
@@ -98,10 +101,14 @@ class UserDashboard extends CI_Controller{
         $data->result();
         
         if($query){
-            redirect('UserDashboard/displaydashboard',$data);
+            redirect('UserDashboard/displaydashboard', $data);
         }else{
             echo "Unable to delete";
         }
+    }
+
+    public function CheckIfType(){
+        
     }
     
 }

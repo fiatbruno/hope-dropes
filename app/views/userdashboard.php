@@ -175,7 +175,22 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">Send appointment</button>
+                        <?php 
+                        $found = 0;
+                        foreach($blood as $row){
+                          if($row->user_id == $_SESSION['user_id']){
+                              $found += 1;
+                          } 
+                        }
+
+                        if($found==0){
+                          echo "<p>Please first add blood group!<p>";
+                          echo "<button type='submit' class='btn btn-danger' disabled>Send appointment</button>";
+                        }else{
+                          echo "<button type='submit' class='btn btn-danger'>Send appointment</button>";
+                        }
+                        ?>
+                        
                       </div>
                     </form>
                   </div>

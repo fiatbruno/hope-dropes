@@ -10,9 +10,9 @@
    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-   <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script> -->
+   <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/mainstyle.css"></head>
 <body>
 <nav class="navbar navbar-light bg-light p-3">
@@ -80,47 +80,35 @@
                       </ul>
                 </div>
             </nav>
-<main class="col-md-9 ml-sm-auto col-lg-10  wd-50 ml-lg-17 px-md-4 py-4">
-<div class="card">
-  <div class="card-body text-center">
-  <h2 class="text-center text-danger">List of All users</h2>
-  </div>
-</div>
+<main class="col-md-9 ml-sm-auto col-lg-10 ml-lg-17 px-md-4 py-4">
+<h3 class="text-center text-danger">List of Blood Donors</h3>
   <div class="container  mt-30 table-responsive">
-  <table class="table  table-hover  text-nowrap w-100" id="table_example">
-            <thea>
+  <table class="table   table-hover  text-nowrap w-100" id="table_example">
+            <thead>
                 <tr>  
-                <th>#</th>                                    
-                <th>Username </th>
-                <th>Gender </th>
-                <th>Telephone  </th>
-                <th>Email </th>        
-                <th>Actions</th>
+                <th>Username</th>                                    
+                <th>Blood group </th>
+                <th>Blood group sign</th>
+                <th>Create date</th>
                 </tr>  
             </thead>
             <tbody>  
                 <?php  
-                $id = 1;
-                foreach ($user as $row)  
+                foreach ($h->result() as $row)  
                 {  
                     ?><tr>  
-                    <td><?=$id?></td>  
-                    <td><?php echo $row->username;?></td>  
-                    <td><?php echo $row->gender;?></td>  
-                    <td><?php echo $row->telephone;?></td>  
-                    <td><?php echo $row->email;?></td>  
-                    <td><button class="btn  btn-outline-success">Update</button>
-                          <button class="btn  btn-outline-danger">Delete</button></td>
+                    <td><?php echo $row->username?></td>  
+                    <td><?php echo $row->bloodgroup;?></td>  
+                    <td><?php echo $row->bloodgroupsign;?></td>  
+                    <td><?php echo $row->create_date;?></td>  
                     </tr>  
-                    <?php $id+=1;?>
                 <?php }  
                 ?>  
             </tbody>  
         </table>
-        <p class="text-right"><?php echo $links; ?></p>
 </div>
 </main>
-<!-- <script>
+<script>
     $(document).ready( function () {
         $('#table_example').DataTable(
             {
@@ -128,6 +116,6 @@
             }
         );
     } );
-</script> -->
+</script>
 </body>
 </html>
