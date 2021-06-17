@@ -19,10 +19,12 @@
   </head>
   <body class="">
     
-    <h1 class="head">Hope Drops</h1>
+    <h1></h1>
 
     <div class="form col-lg-4">
-        <h1>Register Page!</h1>
+    <img class="card-img-top" style="width:120px; height:20vh"  src="<?php echo base_url()?>assets/images/logo.jpg" alt="Blood_Drop">
+
+<span style="font-size:25px">Register Here!</span>
         <div>
             <p>Already have an account? <a href="<?php echo base_url()?>auth/login">Login</a></p>
         </div>

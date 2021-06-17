@@ -18,15 +18,14 @@
     <title>Update Page</title>
 
 </head>
-
+<h1></h1>
 <body class="">
-
-    <h1 class="head">Hope Drops</h1>
-
     <div class="form col-lg-4">
-        <h1>Update Page!</h1>
+    <img class="card-img-top" style="width:100px; height:20vh"  src="<?php echo base_url()?>assets/images/logo.jpg" alt="Blood_Drop">
 
-        <p>Update your credentials</p>
+        <span style="font-size:25px">Update Profile</span>
+
+        <p class="text-center">Update your credentials</p>
         <?php if (isset($_SESSION['success'])) { ?>
             <div class="alert alert-success"><?php echo $_SESSION["success"]; ?></div>
         <?php } 
