@@ -81,6 +81,12 @@
                 </div>
             </nav>
 <main class="col-md-9 ml-sm-auto col-lg-10  wd-50 ml-lg-17 px-md-4 py-4">
+<nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="text-danger">Users</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">List of Users</li>
+                    </ol>
+                </nav>
 <div class="card">
   <div class="card-body text-center">
   <h2 class="text-center text-danger">List of All users</h2>
@@ -109,8 +115,9 @@
                     <td><?php echo $row->gender;?></td>  
                     <td><?php echo $row->telephone;?></td>  
                     <td><?php echo $row->email;?></td>  
-                    <td><button class="btn  btn-outline-success">Update</button>
-                          <button class="btn  btn-outline-danger">Delete</button></td>
+                    <td><a href="<?php echo base_url()?>user/UpdateForm" class="btn btn-outline-success" role="button" aria-disabled="true">Update</a>
+                    <a href="<?php echo base_url()?>user/delete" name="delete" class="btn btn-outline-danger" role="button" aria-disabled="true">Delete</a>
+</td>
                     </tr>  
                     <?php $id+=1;?>
                 <?php }  
@@ -119,6 +126,7 @@
         </table>
         <p class="text-right"><?php echo $links; ?></p>
 </div>
+<a href="<?php echo base_url()?>createPdf/addToPdf" class="btn btn-primary btn-lg" role="button" aria-disabled="true">View Pdf of users</a>
 </main>
 <!-- <script>
     $(document).ready( function () {
