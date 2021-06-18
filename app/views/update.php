@@ -22,7 +22,6 @@
 
 <body class="">
 
-    <h1 class="head">Hope Drops</h1>
     <div class="form col-lg-4">
 
         <img class="card-img-top" style="width:100px; height:20vh" src="<?php echo base_url() ?>assets/images/logo.jpg" alt="Blood_Drop">
@@ -57,8 +56,38 @@
                 </div>
                 <div class="form-group">
                     <label for="telephone" class="label-default">Telephone:</label>
-                    <input name="telephone" class="form-control" id="telephone" type="tel" value="<?= $row->telephone ?>">
+                    <input name="telephone" class="form-control" id="telephone" type="number" value="<?= $row->telephone ?>">
                 </div>
+                <div class="form-group">
+                <label for="district" class="form-label">District Name</label>
+                <select class="form-select" aria-label="Default select example" name="districtId" id="district" onchange="get_sectors(event)" required>
+                    <option selected value="<?=$row->district?>"><?=$row->districtName?></option>
+                    <?php
+                        if(!empty($table)){
+                            foreach($table as $district){ ?>
+                                <option value="<?php echo $district->districtId?>"><?php echo $district->districtName ?></option>
+                            <?php }
+                        };
+                    ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="district" class="form-label">Sector Name</label>
+                <select aria-label="Default select example" name="sectorId" id="sector" class="sectors form-select" required>
+                    <option value="<?=$row->sector?>" selected><?=$row->sectorName?></option>
+                    <?php
+                        if(!empty($sectors)){
+                            foreach($sectors as $sector)
+                            {
+                                $district_id = $sector->districtId ?>
+                                <option value="<?php echo $sector->sectorId?>" class="<?=$district_id ?> allSectors"><?php echo $sector->sectorName?></option>
+                            <?php }
+                        }else{
+                                echo "<option>nothing</option>";
+                        }
+                    ?>
+                </select>
+            </div>
                 <div>
                     <button name="update" class="btn btn-blood p-2">Update</button>
                 </div>
@@ -66,6 +95,23 @@
         <?php } ?>
     </div>
 
+    <script>
+        function get_sectors(ev){
+            let selector = document.getElementsByClassName('sectors')[0];
+            selector.value = "";
+            let allSectors = document.getElementsByClassName("allSectors");
+            id = ev.target.value 
+            for(let j=0; j<allSectors.length; j++){
+                allSectors[j].style.display = "none";
+            }
+    // 
+            for(let i=0; i<allSectors.length; i++){
+                if(allSectors[i].className.includes(id)){
+                    allSectors[i].style.display = "block";
+                }
+            }
+        }
+  </script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

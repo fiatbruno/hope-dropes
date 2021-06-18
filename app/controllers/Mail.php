@@ -30,6 +30,7 @@ class Mail extends CI_Controller{
         $query = $this->db->query("SELECT * from appointments a inner join users u on a.username = u.username where appointId='$id'");
         $ans = $query->result();
         $to_email = $ans[0]->email;
+        $to_name = $ans[0]->username;
     // echo $ans->email;
         
         // foreach($ans as $val){
@@ -40,7 +41,7 @@ class Mail extends CI_Controller{
             $message = "
                 <html>
                 <body style='font-family: Poppins, sans-serif; color: #000;'>
-                <h1> Hi  ".$_SESSION['username']." !</h1>
+                <h1> Hi  ".$to_name." !</h1>
                 <p>
                 This is an email from Hope Drops about the donation you applied for. 
                 For complete Information about our working process, click to login <a href='". base_url() ."auth/login'>Here</a>. 

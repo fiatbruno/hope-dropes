@@ -9,9 +9,10 @@
 	<title>Hope dropes</title>
 </head>
 <style>
-	body{
+	body {
 		font-family: "Poppins";
 	}
+
 	.home-container {
 		background-image: radial-gradient(white, silver);
 		width: 100.81%;
@@ -35,7 +36,7 @@
 	<div data-bs-spy="scroll" data-bs-target="#navlinks" data-bs-offset="0" class="scrollspy-example" tabindex="0">
 		<nav class="navbar navbar-expand-lg navbar-light col-ms-12 col-md-12 bg-body position-sticky top-0 shadow-sm p-3 rounded" id="navlinks">
 			<div class="container-fluid">
-				<a class="navbar-brand text-success" style="text-shadow: 0px 1px black; font-weight: bolder" href="#"><img src="<?php echo base_url() ?>assets/images/blood.jpg" style="width: 50px;"></a>
+				<a class="navbar-brand text-success" style="text-shadow: 0px 1px black; font-weight: bolder" href="#"><img src="<?php echo base_url() ?>assets/images/logo.jpg" style="width: 60px;"></a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -59,7 +60,7 @@
 					<p class=" text-secondary">Saving people's lives is something which you can provide easly. What you need to do is first the heart to give.
 						We are here to help those who are willing to donnate blood to those in need.
 					</p>
-					<p><button type="submit" class="btn-danger shadow-sm row" style="padding: 5px 20px; border: none">Donate</button></p>
+					<p><a href="<?php base_url()?>Auth/login" class="btn-danger btn shadow-sm row" style="padding: 8px 25px; border: none">Donate</a></p>
 				</div>
 			</div>
 
@@ -80,7 +81,7 @@
 				</div>
 				<div class="col-6">
 					<div class="card h-100 m-1" style="border: none;">
-						<img src="<?= base_url() ?>assets/images/post-img.jpg" class="card-img-top" alt="img3" style="height: 300px;">
+						<img src="<?= base_url() ?>assets/images/post-img.jpg" class="card-img-top" alt="img3" style="height: 340px;">
 					</div>
 				</div>
 			</div>
@@ -123,6 +124,29 @@
 
 		</div>
 
+		<div class="footer bg-dark justify-content-center">
+			<div class="row text-light p-4 justify-content-center mt-3 mb-3">
+				<div class="col-3">
+					<h2 class="mb-2">Quick links</h2>
+					<div class="footer">
+						<a class="nav-link active" aria-current="page" href="#">Home</a>
+						<a class="nav-link" href="#about">About Us</a>
+						<a class="nav-link" href="#services">Services</a>
+						<a class="nav-link" href="#table">Help</a>
+					</div>
+				</div>
+				<div class="col-3">
+					<h2 class="mb-2">Get in touch</h2>
+					<div class="footer">
+						<p>Email: hope-drops@gmail.com</p>
+						<p>Phone: 0783932271</p>
+						<p>Instagram: hopedrop21</p>
+						<p>Website: <a class="link" href="#table">Hope-drops</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="text-light text-center">Copyright by &copy; Hope-drops! All right reserved!</div>
+		</div>
 	</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">

@@ -62,6 +62,11 @@
   .modal {
     z-index: 9999;
   }
+  @media only screen and (max-width: 680px){
+    .d-flex.align-items-start.bg-dark.col-ms-12.position-fixed {
+        width: 30%;
+    }
+  }
 </style>
 
 <body>
@@ -83,7 +88,6 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><a class="dropdown-item" href="<?php echo base_url(); ?>user/profile">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Reset Password</a></li>
             <li><a class="dropdown-item" href="#">Notifications</a></li>
           </ul>
         </li>

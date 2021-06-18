@@ -38,3 +38,6 @@
 .sidebar .nav-link.active {
     color: rgb(0, 0, 0);
 }
+li.nav-item {
+    padding-bottom: 10px;
+}

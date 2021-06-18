@@ -39,9 +39,11 @@
         <?php }
         foreach($user as $row){
           echo "<h4 class='mb-3'>Hi, ".$row->username."</h4>";
-          echo "<p>".$row->gender."</p>";
-          echo "<p>".$row->telephone."</p>";
-          echo "<p>".$row->email."</p>";
+          echo "<p>Gender: ".$row->gender."</p>";
+          echo "<p>Telephone: ".$row->telephone."</p>";
+          echo "<p>Email: ".$row->email."</p>";
+          echo "<p>District: ".$row->districtName."</p>";
+          echo "<p>Sector: ".$row->sectorName."</p>";
         }
         ?>
         
