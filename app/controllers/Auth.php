@@ -105,7 +105,6 @@ class Auth extends CI_Controller{
     public function logout(){
         unset($_SESSION);
         session_destroy();
-        $_SESSION['user_logged'] = FALSE;
         redirect("auth/login", "refresh");
     }
 
@@ -173,6 +172,7 @@ class Auth extends CI_Controller{
                         redirect('dashboard/index');
                     }
                     else {
+                        $_SESSION['user_logged'] = TRUE;
                         redirect('userdashboard/displaydashboard');
                     }
 

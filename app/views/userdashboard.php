@@ -1,11 +1,10 @@
 <!DOCTYPE html>
+<?php
 
-<!-- <?php
-      session_start();
-      if (isset($_SESSION['error'])) {
-        // location('dashboard/login');
-      }
-      ?> -->
+
+
+
+?>
 <html lang="en">
 
 <head>
@@ -89,7 +88,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link bg-danger text-white rounded shadow-sm btn px-3 mx-2" aria-current="page" href="<?php echo base_url() ?>auth/login" style="padding: 5px 10px">Logout</a>
+          <a class="nav-link bg-danger text-white rounded shadow-sm btn px-3 mx-2" aria-current="page" href="<?php echo base_url() ?>auth/logout" style="padding: 5px 10px">Logout</a>
         </li>
       </div>
     </div>
@@ -144,14 +143,7 @@
         <div class="tab-pane fade" id="v-pills-blood" role="tabpanel" aria-labelledby="v-pills-blood-tab">
 
           <?php 
-          $foundUser = 0;
-          echo "WE";print_r($blood);
-          if(print_r($blood) == []){
-            echo "0";
-          }else{
-            echo "1";
-          }
-          if(print_r($blood)) {
+          if(!empty($blood)) {
             foreach($blood as $value){
             ?>
               <div class="row w-100 mx-2">

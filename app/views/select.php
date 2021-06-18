@@ -132,6 +132,7 @@
                 <th>Gender </th>
                 <th>Telephone </th>
                 <th>Email </th>
+                <th>Actions</th>
               </tr>
               </thead>
               <tbody>
@@ -145,6 +146,9 @@
                     <td><?php echo $row->gender; ?></td>
                     <td><?php echo $row->telephone; ?></td>
                     <td><?php echo $row->email; ?></td>
+                    <td><a href="<?php echo base_url()?>user/update?id=<?=$userid?>" class="btn btn-outline-success" role="button" aria-disabled="true">Update</a>
+                    <a href="<?php echo base_url()?>user/delete?id=<?=$userid?>" name="delete" class="btn btn-outline-danger" role="button" aria-disabled="true">Delete</a>
+                    </td>
                   </tr>
                   <?php $id += 1; ?>
                 <?php }

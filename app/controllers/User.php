@@ -31,11 +31,16 @@ class User extends CI_Controller{
 
     public function updateForm(){
         $username = $_SESSION["username"];
+
+        // $editId = $_GET["id"];
+        // $editQuery = $this->db->query("SELECT * FROM users where user_id = $editId");
+        // $toEdit = $editQuery->result();
+
         $query = $this->db->query("SELECT * from users where username = '$username'");
         $data = $query->result();
 
         // $query = $this->load->view("update", ['data'=>$data]);
-        redirect("update", ['data'=>$data]);
+        redirect("User/profile", ['data'=>$data]);
     }
 
     public function update(){
@@ -75,13 +80,13 @@ class User extends CI_Controller{
 
                 $query = $this->db->delete("users", "user_id = $delete_id");
 
-                // if($delte){
-                //     $this->session->set_flashdata("success", "The account has been deleted!");
-                //     redirect("mail/index", "refresh");                
-                // }else{
-                //     $this->session->set_flashdata("success", "The account can not been deleted!");
-                //     redirect("mail/index", "refresh");                
-                // }
+                if($query){
+                    $this->session->set_flashdata("success", "The account has been deleted!");
+                    redirect("select/index", "refresh");                
+                }else{
+                    $this->session->set_flashdata("success", "The account can not been deleted!");
+                    redirect("select/index", "refresh");                
+                }
                 
                 
         // }    
