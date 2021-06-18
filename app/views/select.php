@@ -125,7 +125,7 @@
 
         <div class="container  mt-30 table-responsive">
           <table class="table  table-hover  text-nowrap w-100" id="table_example">
-            <thea>
+            <thead>
               <tr>
                 <th>#</th>
                 <th>Username </th>

@@ -19,7 +19,7 @@
   </head>
   <body class="">
     
-    <h1 class="head">Hope Drops</h1>
+    <h1></h1>
 
     <div class="form col-lg-4">
         <img class="card-img-top" style="width:120px; height:20vh"  src="<?php echo base_url()?>assets/images/logo.jpg" alt="Blood_Drop">
