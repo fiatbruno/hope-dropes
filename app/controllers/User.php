@@ -26,6 +26,7 @@ class User extends CI_Controller{
         $getRole = $this->db->query("SELECT * from roles where username = '$username'");
         $role = $getRole->result();
         $this->load->view("profile", ['user'=>$data, 'role'=>$role]);
+        // redirect("profile", ['user'=>$data, 'role'=>$role]);
     }
 
     public function updateForm(){
@@ -33,7 +34,8 @@ class User extends CI_Controller{
         $query = $this->db->query("SELECT * from users where username = '$username'");
         $data = $query->result();
 
-        $query = $this->load->view("update", ['data'=>$data]);
+        // $query = $this->load->view("update", ['data'=>$data]);
+        redirect("update", ['data'=>$data]);
     }
 
     public function update(){
@@ -68,15 +70,21 @@ class User extends CI_Controller{
     }
     
     public function delete(){
-        if (isset($_SESSION["delete"])){
-                $delete_id  = $_SESSION['delete_id'];
+        // if (isset($_SESSION["delete"])){
+                $delete_id  = $_GET['id'];
 
-                $this->db->delete("users", "user_id = $delete_id");                
+                $query = $this->db->delete("users", "user_id = $delete_id");
 
-                $this->session->set_flashdata("success", "The account has been deleted!");
-                redirect("mail/index", "refresh");                
+                // if($delte){
+                //     $this->session->set_flashdata("success", "The account has been deleted!");
+                //     redirect("mail/index", "refresh");                
+                // }else{
+                //     $this->session->set_flashdata("success", "The account can not been deleted!");
+                //     redirect("mail/index", "refresh");                
+                // }
                 
-        }    
+                
+        // }    
     }
 }
 

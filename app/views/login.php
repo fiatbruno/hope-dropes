@@ -18,8 +18,11 @@
     <h1 class="head">Hope Drops</h1>
   
     <div class="form col-lg-4">
-        <h1>Login Page!</h1>
-        <p>Fill out the credentials</p>
+        <img class="card-img-top" style="width:120px; height:20vh"  src="<?php echo base_url()?>assets/images/logo.jpg" alt="Blood_Drop">
+
+<span style="font-size:25px">Log in!</span>
+
+        <p class="text-center">Fill out the credentials</p>
         <?php if (isset($_SESSION['success'])) {?>
         
         <div class="alert alert-success"><?php echo $_SESSION["success"];?></div>

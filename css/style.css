@@ -3,7 +3,7 @@
 	border: 1px solid black;
 	padding: 5rem;
 	border-radius: 3rem;
-	box-shadow: 20px 20px #212529;
+	box-shadow: 5px 5px #110f0f;
 	background-color: #fff;
 }
 html{
@@ -38,7 +38,7 @@ body {
 }
 
 a{
-    text-decoration: underline 5px;
+    text-decoration: underline 1px;
 }
 
 h1 {
@@ -82,7 +82,7 @@ h1 {
 	border: 1px solid black;
 	padding: 0 1rem;
 	border-radius: 3rem;
-	box-shadow: 20px 20px #212529;
+	box-shadow: 10px 10px #212529;
 	background-color: #fff;
 }
 .beirut{
@@ -91,8 +91,7 @@ h1 {
     width: 20rem;
     height: 15rem;
     border: 1px solid black;
-	/* border-radius: 3rem; */
-	box-shadow: 20px 20px #212529;
+	box-shadow: 10px 10px #212529;
 	/* background-color: #fff; */
     /* background: green; */
     margin: 1rem 4rem 1rem 0;

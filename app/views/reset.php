@@ -15,7 +15,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<h1 class="head">Hope Drops</h1>
 
 		<div class="form col-lg-4">
-				<h1>Reset password </h1>
+		<img class="card-img-top" style="width:120px; height:20vh"  src="<?php echo base_url()?>assets/images/logo.jpg" alt="Blood_Drop">
+
+<span style="font-size:25px">Reset password!</span>
 				<?php if($this->session->flashdata("email")){ ?>
 					<div class="alert alert-primary" role="alert">
 						<?= $this->session->flashdata("email") ?>
@@ -34,9 +36,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				</div>
 				<button type="submit" class="btn btn-blood">Get reset link</button>
 				</form>
-				<a href="<?php echo base_url();?>auth/login">Log in</a>
+				Arleady have an account? <a href="<?php echo base_url();?>auth/login">Log in</a>
 				<br><br>
-				<a href="<?php echo base_url();?>auth/register">Register</a>
+				Don't have an account? <a href="<?php echo base_url();?>auth/register">Register</a>
 		</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>

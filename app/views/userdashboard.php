@@ -143,9 +143,17 @@
         <!-- Add blood type -->
         <div class="tab-pane fade" id="v-pills-blood" role="tabpanel" aria-labelledby="v-pills-blood-tab">
 
-          <?php foreach ($blood as $value) {
-            if ($value) {
-          ?>
+          <?php 
+          $foundUser = 0;
+          echo "WE";print_r($blood);
+          if(print_r($blood) == []){
+            echo "0";
+          }else{
+            echo "1";
+          }
+          if(print_r($blood)) {
+            foreach($blood as $value){
+            ?>
               <div class="row w-100 mx-2">
                 <div class="card col-md-8 p-3" style="border: none;">
                   <img class="card-img-top h-75" src="<?php echo base_url(); ?>assets/images/image-asset.gif" alt="Card image cap">
@@ -159,19 +167,19 @@
                   <a href="<?php echo base_url(); ?>blood/chooseBlood" class="btn btn-danger mt-2">Change blood group <i class='fas fa-angle-double-right ' style='font-size:20px;margin-left: 15px;'></i></a>
                 </div>
               </div>
-            <?php
-            } else { ?>
-              <div class="row w-100 mx-2 justify-content-center">
-                <div class="card col-md-8 justify-content-center" style="border: none;">
-                  <img class="card-img-top h-75" src="<?php echo base_url(); ?>assets/images/image-asset.gif" alt="Card image cap">
-                  <div class="card-body">
-                    <h3>Add blood group</h3>
-                    <p class="card-text">Add your blood group so that we can know which blood type group you want to donate!</p>
+            
+            <?php }} else { ?>
+                <div class="row w-100 mx-2 justify-content-center">
+                  <div class="card col-md-8 justify-content-center" style="border: none;">
+                    <img class="card-img-top h-75" src="<?php echo base_url(); ?>assets/images/image-asset.gif" alt="Card image cap">
+                    <div class="card-body">
+                      <h3>Add blood group</h3>
+                      <p class="card-text">Add your blood group so that we can know which blood type group you want to donate!</p>
+                    </div>
+                    <a href="<?php echo base_url(); ?>blood/chooseBlood" class="btn btn-danger mt-2">Add blood type <i class='fas fa-angle-double-right ' style='font-size:20px;margin-left: 15px;'></i></a>
                   </div>
-                  <a href="<?php echo base_url(); ?>blood/chooseBlood" class="btn btn-danger mt-2">Add blood type <i class='fas fa-angle-double-right ' style='font-size:20px;margin-left: 15px;'></i></a>
                 </div>
-              </div>
-            <?php }  } ?>
+              <?php }  ?>
         </div>
 
         <!-- Make appointments -->
